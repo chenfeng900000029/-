@@ -1,2 +1,52 @@
 今天重新学习Vue
 堕落太久了 唉
+
+
+------------
+1)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">  <!--挂载的DOM节点 -->
+        {{msg}}
+    </div>
+    <script>
+        var app = new Vue({  //变量 = 构造函数
+            el:"#app",      //必不可少 用来指定页面中存在的DOM元素 挂载到DOM中
+            //用来生命双向绑定的数组
+            data:{          
+                msg:"Vue学习开始了!",
+                a:3,
+                4:3
+            },
+            //created 创建完成还未挂载到DOM
+            created:function(){
+                alert('创建完成还未挂载到DOM')
+            },
+            //创建完成 刚刚挂载到DOM
+            mounted:function(){
+                alert('刚刚挂载到DOM')
+            }
+        });
+    console.log(app.$el) //访问vue实例的 EL
+    console.log(app.msg)    //访问data元素中的属性
+    console.log(app.$data)  //访问data元素中的属性
+  
+
+    </script>
+    <!-- {{}} 双大括号将我们绑定的数据时时显示 -->
+    <!-- 生命周期钩子 方法-->
+    <!-- 主要的三个放吧
+    created 创建完成就调用 还未挂载到DOM元素上
+    mounted el vue实例刚刚挂载到Dom实例上就掉用 
+    beforeDestroy 实例销毁之前进行调用 例如方法销毁之前 进行解绑数据-->
+</body>
+</html>
+------------
