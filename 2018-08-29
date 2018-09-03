@@ -54,3 +54,48 @@ ls-1
 </body>
 </html>
 ------------
+实践
+--------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+</head>
+<!-- //再页面中时时显示当前时间 -->
+<body>
+    <div id="app">
+        {{data}}
+    </div>
+    <script>
+      var app =new Vue({
+          el:"#app",
+          data:{
+            data:new Date(),
+          },
+        mounted:function(){
+            var _this = this; //this代表的就是Vue实例  就是Vue本身
+            //创建一个定时器
+            this.timer = setInterval(function(){
+                _this.data = new Date() 
+            },1000)
+        },
+        beforeDestory:function(){
+            //清除定时器
+            if(this.timer){
+                clearInterval(this.timer)
+            }
+        }
+      })
+    </script>
+    
+</body>
+</html>
+--------------
+
+
+
