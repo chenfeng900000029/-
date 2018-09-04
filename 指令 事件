@@ -1,0 +1,52 @@
+V-text v-html v-bind v-on
+
+----------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    .tranRed{ width: 100px;
+    height: 20px;
+    background: red;
+    }
+</style>
+<body>
+  <div id="app">
+  {{apple}}
+  <span v-text="apple"></span>
+
+  <!-- div子层级 出现banner定义的span标签  并且得到解析 -->
+  <div v-html="banner"></div> 
+
+  <!-- v-bind 动态更新html中的元素 属性 -->
+  <div v-bind:class="className"></div>
+  <!-- v-on 绑定事件监听器 -->
+  <button v-on:click=count>{{countNum}}</button>
+  </div>  
+  <script>
+      var app = new Vue({
+          el:"#app",
+          data:{
+              apple:"苹果",
+              banner:'<span style="color:red;">香蕉</span>',
+              className:'tranRed',
+              countNum:0
+          },
+          // vue所有的方法都定义在此
+          methods : {
+              count:function(){
+                  this.countNum=this.countNum+1
+                  return this.countNum
+              }
+          }
+      })
+  </script>
+    
+</body>
+</html>
+------------
