@@ -1,0 +1,37 @@
+{{text.split(",")}} // 将数组以逗号分割
+{{text.reverse()}} //将数组反转
+{{text.join(',')}} //将数组变成字符串 以逗号分割
+
+------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <!-- {{text.split(',').reverse().join(',')}} 行内反转字符串 -->
+        {{text}} </br>
+        {{reverseText}}  // 计算属性名字 不再是text
+    </div>
+    <script>
+        var app=new Vue({
+            el:"#demo",
+            data:{
+                text:"123,456,789"
+            },
+            computed:{
+                reverseText:function(){
+                    return this.text.split(',').reverse().join(',')
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
+------
