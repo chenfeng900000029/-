@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <!-- computed -->
+        {{prices}}
+    </div>
+    <div id='dc'>
+
+    </div>
+    <script>
+        //计算属性可以依赖多个Vue实例中的数据
+        //app return的值可以返回app2的值 
+        //计算属性  只要其中任意一项有变化 计算属性就会重新执行 视图也会跟新
+        var app2=new Vue({
+            el:'#dc',
+            data:{
+                gm:'$'
+            }
+        })
+
+
+        var app = new Vue({
+            el:"#demo",
+            data:{
+                pack1:[
+                    {
+                        name:"apple",
+                        pirce:500,
+                        count:5
+                        },
+                    {
+                        name:"orange",
+                        pirce:300,
+                        count:7
+                    }
+                ],
+                pack2:[
+                    {
+                        name:"apple",
+                        pirce:700,
+                        count:4
+                        },
+                    {
+                        name:"orange",
+                        pirce:300,
+                        count:7
+                    }
+                ]
+            },
+            computed:{
+                prices:function(){
+                    var prices = 0
+                    //购物车①
+                    for(var i=0;i<this.pack1.length;i++){
+                       prices +=this.pack1[i].pirce * this.pack1[i].count                    
+                    }
+                    //购物车②
+                    for(var j=0; j<this.pack2.length;j++){
+                     prices +=this.pack2[j].pirce * this.pack2[j].count
+                    }
+                    return app2.gm + prices 
+                }
+            }
+        })
+    </script>
+
+
+</body>
+</html>
