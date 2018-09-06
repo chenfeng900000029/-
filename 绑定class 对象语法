@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <style>
+        .divStyle{
+            background:#f5f5f5;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            color:coral;
+        }
+    </style>
+    <!-- V-bind 绑定class -->
+    <!-- 对象语法 -->
+    <div id="demo">
+        <!-- 对象的键是类名 值是布尔 -->
+        <div :class="{divStyle:isActive}">
+            wrwer
+        </div>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#demo',
+            data:{
+                isActive:true,
+            }
+        })
+    </script>
+</body>
+</html>
