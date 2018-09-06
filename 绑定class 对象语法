@@ -98,3 +98,57 @@
 </body>
 </html>
 ===========
+
+计算书行
+==========
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <style>
+        .btnborder{
+            height: 35px;
+            width: 120px;
+            background:salmon;
+            border-radius: 4px;
+        }
+        .btnbordergr{
+            height: 35px;
+            width: 120px;
+            background:royalblue;
+            border-radius: 4px;
+        }
+    </style>
+    <!-- V-bind 绑定class -->
+    <!-- 对象语法 -->
+    <div id="demo">
+        <!-- 对象的键是类名 值是布尔 -->
+        <div :class="classname"></div>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#demo',
+            data:{
+                isActive:true,
+                isBorder:true,
+                ggdborder:false,
+
+            },
+            computed:{
+                //计算属性
+                classname:function(){
+                    return{
+                        btnborder:this.isBorder && !this.ggdborder
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+</html>
