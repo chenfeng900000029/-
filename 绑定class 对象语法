@@ -16,12 +16,15 @@
             line-height: 50px;
             color:coral;
         }
+        .boStyle{
+            border: 1px solid #999;
+        }
     </style>
     <!-- V-bind 绑定class -->
     <!-- 对象语法 -->
     <div id="demo">
         <!-- 对象的键是类名 值是布尔 -->
-        <div :class="{divStyle:isActive}">
+        <div :class="{divStyle:isActive,boStyle:isBorder}">
             wrwer
         </div>
     </div>
@@ -30,6 +33,7 @@
             el:'#demo',
             data:{
                 isActive:true,
+                isBorder:false // true 或 false
             }
         })
     </script>
