@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <style>
+    </style>
+    <div id="demo">
+            <!-- 数组对象混用 -->
+        <div :class="[{active:isActive},errorx]">
+
+        </div>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#demo',
+            data:{
+                isActive:true,
+                errorx:'classname'
+            }
+        })
+    </script>
+</body>
+</html>
