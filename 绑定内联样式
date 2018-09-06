@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <style>
+    </style>
+    <div id="demo">
+            <!--绑定内联样式 -->
+            vuejs中 vsGsdR  回转换成 vs-gsd-r
+        <div v-bind:style="{'color':color,'fontSize':fontSize}">
+                绑定内敛样式
+        </div>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#demo',
+            data:{
+               color:'red',
+               fontSize:'20px'
+            }
+        })
+    </script>
+</body>
+</html>
