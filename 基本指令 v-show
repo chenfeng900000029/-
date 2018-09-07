@@ -1,0 +1,29 @@
+V-SHOW
+====================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>    
+</head>
+<body>
+    <div id="demo">
+        <!-- v-show 永远存在html文档中  条件不达成是 就改变css属性为display为none -->
+        <!-- 如果频繁渲染刷新 用v-if  -->
+        <!-- 不频繁的话用 v-show -->
+        <div v-show="9>5">qweqeqw</div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#demo",
+            data:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>
