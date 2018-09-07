@@ -1,0 +1,113 @@
+v-cloak
+==============
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>    
+</head>
+<body>
+    <style>
+        /* [v-cloak] 一般与display:none; 配合使用 */
+        [v-cloak]:{
+            display:none;
+        }
+    </style>
+    <div id="demo">
+    <!-- v-clock 解决初始化慢 加载闪动  -->
+        <p v-cloak>{{msg}}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#demo",
+            data:{
+                msg:"指令"
+            }
+        })
+    </script>
+    
+</body>
+</html>
+============
+v-once
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>    
+</head>
+<body>
+    <div id="demo">
+        <span v-once>{{oncedata}}</span>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#demo",
+            data:{
+                oncedata:"v-once作用只渲染一次"
+            }
+        })
+    </script>
+    
+</body>
+</html>
+
+===========
+v-if v-else key
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>    
+</head>
+<body>
+    <div id="demo">
+        <!-- v-if后面接的登号 -->
+        <!-- v-if v-else  是一套组合 if条件达成 就显示if 未达成if条件就显示 else-->
+        <span v-if="6>4">{{apple}}</span>
+        <span v-else>{{banner}}</span>
+        <!-- 栗子 根据if条件 来判断显示姓名 还是密码 -->
+        <div v-if="type==='1'">
+            姓名:<input type="text" placeholder="请输入姓名">
+        </div>
+        <div v-else>
+                                            <!-- key 组件不复用 -->
+                密码:<input type="text" name="" placeholder="请输入密码" key='1'>
+        </div>
+        <div >
+            <button @click="point">按钮</button>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#demo",
+            data:{
+                apple:"Apple",
+                banner:"Banner",
+                orange:"Orange",
+                //给出默认条件
+                type:"1"
+            },
+            methods:{
+                point:function(){
+                    //改变条件 实现切换
+                    this.type=(this.type==='1'?'password':'1')
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
+
