@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <div v-for="movie in arr">{{movie}} </div>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#demo',
+            data:{
+                arr:['赌神','赌侠','赌圣']
+            }
+        })
+    </script>
+</body>
+</html>
+
+
+==========
+页面回重新渲染 ⬇️
+app.arr.push('push向数组末尾添加一个元素')
+app.arr.pop('pop将数组的最后一位移出')
+app.arr.shift('删除数组的第一个元素')
+app.arr.unshift('向数组第一位添加一个元素')
+app.arr.splice(x,x,?) //拥有三个参数 开始操作的位置 第二个参数要操作的长度 第三个可选参数
+删除操作: app.arr.splice(1,1)  //删除一号位  长度1
+["赌侠"]
+添加操作: app.arr.splice(3,0,'koko')  //在三号位添加koko元素  长度O
+[]
+
+排序:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <div v-for="movie in arr">{{movie}} </div>
+        <button @click="sortArr">排序</button>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#demo',
+            data:{
+                arr:['赌神1','赌侠(2)','赌圣3']
+            },
+            methods:{
+                sortArr:function(){
+                        this.arr.sort(function(a,b){
+                            return b.length - a.length;
+                        })
+                    }
+            }
+            
+        })
+    </script>
+</body>
+</html>
+
+
+数组反转: reverse
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <button @click="reserveArr">数组反转</button>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#demo',
+            data:{
+                arr:['赌神1','赌侠(2)','赌圣3']
+            },
+    
+                reserveArr:function(){
+                    this.arr.reverse()
+                }    
+            }
+            
+        })
+    </script>
+</body>
+</html>
+
+
+============
+vue 检测不到⬇️
+改变数组的指定项 
+  changeOption:function(){
+      this.arr[3]="car"
+    } 
+  改变数组的长度
+  changeLength:function(){
+     this.arr.length=1
+    } 
+  解决方法： 
+  改变数组的指定项
+  写在vue之外 script之内
+    Vue.set(app.arr,1,"car"); //数组  操作数组的index  要赋的值 
+  高边数组的长度：
+  app.arr.splice(0)  数组长度变成0
+  app.arr.splice(1)  数组长度变成1
+  
+  
+  +++++++++++++
+  过滤 filter
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        {{matchS}}
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#demo',
+            data:{
+                arr:['赌神1','赌侠2','赌圣3']
+            },
+            computed:{
+                matchS:function(){
+                    return this.arr.filter(function(value){
+                           return value.match(/3/) 
+                    })
+                }    
+            }
+    </script>
+</body>
+</html>
+  
+
