@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>    
+</head>
+<body>
+    <div id="demo">
+        <!-- 列表渲染属性 v-for -->
+        <!-- 当需要讲一个数组货枚举一个对象的属性的时候循环显示时 就会用到列表渲染指令 v-for -->
+        <!-- 两种使用场景 
+                1.遍历多个对象
+                2.遍历一个对象的多个使用属性 
+                -->
+       <!-- v-for的用法 （1）遍历多个对象 v-for写在要遍历的元素上 例如下文的LI -->
+       <!-- vueMeth in vueMethods  第一个单词 是我们自己定义的变量  第三个单词是data中的数组  vueMeth.name 来取里边的值        -->
+       <ul >
+            <li v-for="vueMeth in vueMethods">{{vueMeth.name}}</li>
+       </ul>
+       <!-- 带索引的写法 1 2 3 -->
+       <ul>
+           <li v-for="(vueMeth,index) in vueMethods">{{index}}{{vueMeth.name}}</li>
+       </ul>
+
+       <!-- 第二个使用场景  遍历一个对象的多个属性 -->
+       <ul>
+           <li v-for="value in vueStar">{{value}}</li>
+       </ul>
+        <!-- 拿到索引的方法 -->
+        <ul>
+            <li v-for="(value,key,index) in vueStar">第{{index}}个 +++++键是:{{key}}+++++++值是:{{value}}</li>
+        </ul>
+        
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#demo",
+            data:{
+                // 数组 数组内对象 每个对象对应一个li
+                vueMethods:[
+                    {name:'苹果'},
+                    {name:'香蕉'},
+                    {name:'栗子'},
+                ],
+                vueStar:{
+                        star1:"霍建华",
+                        star2:"周迅",
+                        star3:"宋祖儿"
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
