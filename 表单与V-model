@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <!-- 单行输入框 -->
+        <input type="text" v-model="msg">
+        {{msg}}
+        <!-- 多行输入框 -->
+       <textarea name="" id="" cols="30" rows="10" v-model="textar">2232234234</textarea>  <!-- 初始化值不会显示 -->
+        {{textar}}
+        <!-- 单个单选框  默认选中 用v-model不生效-->
+        <input type="radio" v-bind:checked="oneridio">
+        <!-- 多个单选框 -->
+        <input type="radio" name="checkeds" value="苹果" v-model="singleCheck">苹果
+        <input type="radio" name="checkeds" value="香蕉" v-model="singleCheck">香蕉
+        <input type="radio" name="checkeds" value="荔枝" v-model="singleCheck">荔枝   {{sinGlecheck}}
+        <!-- 单个复选框 -->
+        <input type="checkbox" v-model="singleCheckBox">
+        <input type="checkbox" v-bind:checked="singleCheckBox">
+        <!-- 多个复选框 -->
+        <input type="checkbox" value="周一" v-model="moreCheckBox">
+        <input type="checkbox" value="周二" v-model="moreCheckBox">
+        <input type="checkbox" value="周三" v-model="moreCheckBox">
+        <input type="checkbox" value="周四" v-model="moreCheckBox">
+        <!-- 单选下拉框  只能放在select标签内-->
+        <select name="" id="" v-model="combox">
+            <option value="武侠小说">武侠小说</option>
+            <option value="短篇小说">短篇小说</option>
+            <option value="中国故事">中国故事</option>
+            <option value="微型小说">微型小说</option>
+        </select>
+        <!-- 多选下拉框  -->
+        <select name="" id="" v-model="comboxmul" multiple>
+                <option value="武侠小说">武侠小说</option>
+                <option value="短篇小说">短篇小说</option>
+                <option value="中国故事">中国故事</option>
+                <option value="微型小说">微型小说</option>
+        </select>
+        {{comboxmul}}
+
+        <!-- 知识点2 绑定值 -->
+        <!-- 单选按钮  v-model 配合v-model 可以获取选中时的value得值--> 
+        <input type="radio" v-model="picked" v-bind:value="pickedl"> {{picked}}
+        <!-- 单个复选按钮 true-value/ false-value -->
+        <input type="checkbox" v-model="toggle" :true-value="value1" :false-value="value2">
+        {{toggle}}
+        {{toggle==value1}}
+        {{toggle==value2}}
+
+        <!-- 下拉框 -->
+        <select name="" id="" v-model="selectValue">
+                <option value="武侠小说">武侠小说</option>
+                <option value="短篇小说">短篇小说</option>
+                <option value="中国故事">中国故事</option>
+                <option value="微型小说">微型小说</option>
+        </select>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#demo',
+            data:{
+                msg:'',
+                textar:'',
+                oneridio:true,
+                singleCheck:'荔枝',  //选中的单选框Value值
+                singleCheckBox:true,
+                moreCheckBox:['周三'], //绑定字符串会转化为 true false 
+                combox:'中国故事', // 也可以绑定数组： combox:[] 
+                                 //绑定字符串 或数组 都会转化为字符串 
+                comboxmul:['短篇小说'],
+                
+                // 绑定值栗子 
+                picked:true,
+                pickedl:'栗子',
+
+                toggle:true,
+                value1:'trueValue',
+                value2:'falseValue',
+
+
+            }
+
+        })
+    </script>
+</body>
+</html>
