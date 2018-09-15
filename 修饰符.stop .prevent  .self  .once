@@ -1,0 +1,97 @@
+
+
+修饰符-阻止冒泡  .stop 运用
+===================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <style>
+    .divBor{
+        width: 100px;
+        height: 100px;
+        border: 1px solid #999;
+    }
+    </style>
+    <div id="demo">
+       <div @click="clickDiv" class="divBor" >
+            <button @click.stop="clickBtn">阻止冒泡</button>
+       </div>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#demo',
+            data:{
+               
+            },
+            methods:{
+                clickDiv:function(){
+                    alert("div被点击")
+                },
+                clickBtn:function(){
+                    alert("btn被点击")
+
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
+
+提交表单不重载页面 ** 注意.prevent所在位置 
+=============
+.prevent
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+       <form action="" @submit.prevent="unSubmit"> // 提交什么就写在哪
+           <button type="submit">提交表单</button>
+       </form>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#demo',
+            data:{
+               
+            },
+            methods:{
+                unSubmit:function(){
+                   alert("不重载") 
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
+
+.self 只作用在元素本身 而非子元素  只作用在元素本身*3
+=================
+    <div id="demo">
+       <div @click.self="clickDiv" class="divBor" >   //只有btn生效 也不会向上冒泡
+            <button @click="clickBtn">阻止冒泡</button>
+       </div>
+
+
+.once  只执行一次  
+==============
+<div @click.once="clickDiv" class="divBor" >
+
+
+
+
