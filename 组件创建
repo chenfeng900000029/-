@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+         <comtag></comtag> <!-- 全局组件 -->
+         <demotag></demotag>   <!-- 局部组件 -->
+         <apptag></apptag>  <!-- 局部组件  app中定义的组件不会再Demo中显示--> 
+
+         <!-- 组件局限 例如 -->
+        <table> 
+             <demotag></demotag>   <!--  div会显示在table标签外边 因为他只能有tr td tbody--> 
+             <!-- 解决方法  用is属性挂载-->
+             <tbody is="demotag"></tbody>  <!-- 写可以接受的标签 -->
+        </table>
+
+    </div>
+    <div id="app">
+            <comtag></comtag>
+            <demotag></demotag>        <!-- 局部组件 demo中定义的组件不会再app中显示--> 
+            <apptag></apptag>       <!-- 局部组件 --> 
+        </div>
+
+    <script>
+        //全局组件创建 
+        //有点:所有实例都可以用
+        //缺点:权限太大 容错率低
+        Vue.component('comtag',{
+            template:'<div>adfsaff</div>'
+        })    // (标签名字符串，对象))
+        var app=new Vue({
+            el:'#demo',
+         //局部注册
+         components:{
+            'demotag':{
+                 template:'<div>demo中的组件</div>'
+                }
+            },
+            data:{
+            }
+            
+        })
+
+        var app=new Vue({
+        el:'#app',
+        //局部注册
+        components:{
+            'apptag':{
+                template:'<div>app中定义的组件</div>'
+            }
+        },
+        data:{
+            }
+            
+        })
+    </script>
+</body>
+</html>
