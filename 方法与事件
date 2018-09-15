@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+       <div >{{count}}</div>
+       <button @click="handle">+1</button>
+       <button @click="addNight(8)">+8</button> 
+
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#demo',
+            data:{
+                count:0
+            },
+            methods:{
+                handle:function(){
+                    this.count=this.count+1
+                },
+                addNight:function(value){ //如果方法中有参数  上边sddNight没写() 默认会穿event对象 [object MouseEvent]
+                                         
+                        var value=value || 8
+                        this.count=value+this.count  
+                }
+
+            }
+            
+        })
+    </script>
+</body>
+</html>
